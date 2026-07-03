@@ -13,6 +13,7 @@ window.addEventListener('DOMContentLoaded', () => {
     /* If we access localStorage too early, Safari may fail to load localStorage.
        See https://fschopp.github.io/safari-local-storage-bug/ */
     setTimeout(() => {
+        myItemsRemaining.loadItems();
         starting_input();
         if(debugging) {
             document.getElementById("debug_button").style.display = "inline-block";
@@ -39,7 +40,7 @@ pre {
 <body>
 
 
-<div id="setUp" style = "display: block;">
+<div id="setUp" style = "display: none;">
 <pre id="items"></pre>
 <button id="debug_button" onclick="DebugLocalStorage(myItemsRemaining)" style="display: none;">Debug Local Storage</button>
 <button onclick="startGame(myItemsRemaining, itemsPulled)">Start drawing random items, 1 at a time.</button><br/>
@@ -48,14 +49,15 @@ pre {
 placeholder="Enter items here.&#10Multiple items are allowed."></textarea>
 </div>
 
-<div id="playGame" style = "display: none;">
+<div id="playGame" style = "display: block;">
 <pre><button onclick="myPull(start_string, myItemsRemaining, itemsPulled)">Select an item.</button></pre>
 <pre style="font-size: 125%" id="selectedItem"></pre>
 <div>
 <button id="btnListSoFar" onclick="showListSoFar(itemsPulled)">Show items already drawn</button>
-<div id="listSoFarContainer" visibility="none">
+<div id="listSoFarContainer" style="display: none">
 <pre id="listSoFar"></pre>
-<button onclick="hideListSoFar()">Hide list</button>
+<button onclick="hideListSoFar()">Hide the list of items you drew.</button>
 </div>
+<button onclick="reset_pick('Select an item.', myItemsRemaining, itemsPulled)">Edit Item List</button>
 </div>
 </body>
