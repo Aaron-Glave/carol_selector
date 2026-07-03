@@ -73,6 +73,7 @@ function startGame(itemsRemainig, itemsPulled) {
 
 function reset_pick(start_string, myItemsRemaining, itemsPulled) {
     //console.log(myItemsRemaining);
+    hideListSoFar();
     document.getElementById("setUp").style.display = "block";
     document.getElementById("playGame").style.display = "none";
     document.getElementById("selectedItem").textContent = start_string;
